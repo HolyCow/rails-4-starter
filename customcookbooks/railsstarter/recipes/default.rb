@@ -1,5 +1,6 @@
 ruby_version = "2.0.0-p353"
 
+include_recipe "sqlite-dev"
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
 

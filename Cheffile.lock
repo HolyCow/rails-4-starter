@@ -28,6 +28,13 @@ SITE
     yum-epel (0.2.0)
       yum (~> 3.0)
 
+GIT
+  remote: https://github.com/HolyCow/sqlite-dev
+  ref: master
+  sha: f6fa8944a47df4c5e2f4eb75a5c35d9123220f65
+  specs:
+    sqlite-dev (0.0.1)
+
 PATH
   remote: customcookbooks/railsstarter
   specs:
@@ -36,4 +43,5 @@ PATH
 DEPENDENCIES
   railsstarter (>= 0)
   rbenv (>= 0)
+  sqlite-dev (>= 0)
 
