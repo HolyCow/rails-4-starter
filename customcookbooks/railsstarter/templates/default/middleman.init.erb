@@ -1,0 +1,43 @@
+#!/bin/sh
+
+DAEMON=/opt/rbenv/versions/<%= @ruby_version%>/bin/middleman
+NAME=middleman
+DESC=middleman
+PID=/tmp/middleman.pid
+DAEMON_OPTS="--force-polling -l 1"
+
+set -e
+
+case "$1" in
+	start)
+		echo -n "Starting $DESC\n"
+		start-stop-daemon --start -d /vagrant/ajla.net -m --pidfile $PID --background \
+		    --exec $DAEMON -- $DAEMON_OPTS || true
+		echo -n "Done.\n"
+		;;
+
+	stop)
+		echo -n "Stopping $DESC\n"
+		start-stop-daemon --stop --pidfile $PID || true
+		[ -f $PID ] || rm -f $PID
+		echo -n "Done.\n"
+		;;
+
+	restart)
+		echo -n "Stopping $DESC\n"
+		start-stop-daemon --stop --pidfile $PID || true
+		[ -f $PID ] || rm $PID
+		sleep 1
+		echo -n "Starting $DESC\n"
+		start-stop-daemon --start -d /vagrant/ajla.net -m --pidfile $PID --background \
+		    --exec $DAEMON -- $DAEMON_OPTS start || true
+		echo -n "Done.\n"
+		;;
+
+	*)
+		echo "Usage: $NAME {start|stop|restart}" >&2
+		exit 1
+		;;
+esac
+
+exit 0
