@@ -1,7 +1,7 @@
 Rails 4 Starter
 ===============
 
-I user this to create my Rails apps, then throw them in their own repository.
+I user this to create my Rails apps, then throw them in their own repository using https://github.com/HolyCow/rails-4-app-starter as a starting point for the new app.
 
 Requirements
 ============
